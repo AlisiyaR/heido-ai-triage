@@ -4,7 +4,11 @@ An AI-powered automation that reads incoming customer support emails, classifies
 
 Built with **Make**, **Google Gemini API**, **Gmail** and **monday.com**.
 
-> 🎬 **Demo video:** _link coming soon_
+> 🎬 **Demo video:** 
+
+https://github.com/user-attachments/assets/7e3368dc-e74b-4e42-97e3-fd521377630f
+
+
 > 📊 **Test report:** [PDF](docs/Alisiya_Rabinovich_AI_Triage_Test_Report.pdf) · [Excel](docs/Heido_AI_Triage_Test_Report.xlsx)
 
 ---
@@ -25,6 +29,19 @@ Every new email is processed automatically:
 4. **monday.com** – a task is created on the "Customer Support" board with all the details.
 5. **Attachments** – if the email has files, they are added to the task.
 6. **Confirmation** – the customer receives an email with a ticket number.
+
+ ```mermaid
+flowchart LR
+    A([Customer email<br>arrives in Gmail]) --> B[Gemini AI<br>classifies the email]
+    B -->|title · summary ·<br>category · priority| C{Routing rule<br>by category}
+    C -->|Login · Software ·<br>Performance| D1[Daniel Anderson]
+    C -->|Network · Hardware ·<br>Installation| D2[Ryan Mitchell]
+    C -->|Data · Service ·<br>Other| D3[Emily Carter]
+    D1 & D2 & D3 --> E[Task created<br>in monday.com]
+    E --> F{Has<br>attachments?}
+    F -->|Yes| G[Files added<br>to the task]
+    E --> H([Confirmation email<br>with ticket number])
+```
 
 ![Make scenario](images/make-scenario.png)
 
